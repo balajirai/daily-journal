@@ -7,7 +7,7 @@ const _ = require('lodash');
 
 const homeStartingContent = "Embrace the transformative power of daily journaling. Through self-reflection, stress reduction, goal tracking, and creative exploration, journaling offers a dynamic toolkit for personal growth. It enhances problem-solving skills, preserves memories, nurtures gratitude, and sharpens communication. Uncover patterns, foster mindfulness, and embark on a journey of self-discovery. Your thoughts matter—start journaling and unlock a world of benefits for your well-being and development.";
 const aboutContent = "";
-const contactContent = "Scelerisque eleifend donec pretium vulputate sapien. Rhoncus urna neque viverra justo nec ultrices. Arcu dui vivamus arcu felis bibendum. Consectetur adipiscing elit duis tristique. Risus viverra adipiscing at in tellus integer feugiat. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Consequat interdum varius sit amet mattis. Iaculis nunc sed augue lacus. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing elit. Pulvinar elementum integer enim neque. Ultrices gravida dictum fusce ut placerat orci nulla. Mauris in aliquam sem fringilla ut morbi tincidunt. Tortor posuere ac ut consequat semper viverra nam libero.";
+const contactContent = "";
 
 const app = express();
 
@@ -22,6 +22,13 @@ mongoose.connect(process.env.CONNECTION_URL);
 const Post = mongoose.model("Post", {
   title : String,
   content : String
+});
+
+const Contact = mongoose.model("Contact",{
+  full_name: String,
+  email: String,
+  phone_number: String,
+  query: String
 });
 
 // rendering the post from database to home route
@@ -77,6 +84,23 @@ app.get("/posts/:postId", function(req,res){
   .catch(function(err){
     console.log(err);
   });
+});
+
+// storing contact info in database
+app.post("/contact", function(req, res){
+  const contact = new Contact({
+    full_name: req.body.fname +" "+ req.body.lname,
+    email: req.body.email,
+    phone_number: req.body.number,
+    query: req.body.feedback
+  });
+
+  contact.save()     // for saving in the database
+  res.redirect("/submit");
+});
+
+app.get("/submit", function(req,res){
+  res.render("submit");
 });
 
 // listening port
