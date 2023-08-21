@@ -86,6 +86,7 @@ app.get("/posts/:postId", function(req,res){
   });
 });
 
+let flag = false;
 // storing contact info in database
 app.post("/contact", function(req, res){
   const contact = new Contact({
@@ -94,13 +95,18 @@ app.post("/contact", function(req, res){
     phone_number: req.body.number,
     query: req.body.feedback
   });
-
+  flag = true;
   contact.save()     // for saving in the database
   res.redirect("/submit");
 });
 
 app.get("/submit", function(req,res){
-  res.render("submit");
+  if(flag){
+    res.render("submit");
+  }
+  else{
+    res.redirect("/contact");
+  }
 });
 
 // listening port
