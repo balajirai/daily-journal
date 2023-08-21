@@ -26,6 +26,7 @@ This is a blogging web application which allow users to share their blogs public
 
 - Node js
 - Express js
+- EJS
 - MongoDb
 - Mongoose
 
