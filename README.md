@@ -1,6 +1,6 @@
 # Daily Journal
 
-Daily Journal is a web application which allow users to share their daily thoughts and experiences.
+[Daily Journal](https://balajirai-dailyjournal.onrender.com/) is a web application which allow users to share their daily thoughts and experiences.
 
 ---
 
