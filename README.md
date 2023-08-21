@@ -1,6 +1,6 @@
 # Daily Journal
 
-This is a blogging web application which allow users to share their blogs publicly
+Daily Journal is a web application which allow users to share their daily thoughts and experiences.
 
 ---
 
