@@ -2,10 +2,9 @@
   "name": "daily-journal",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
-  "type": "module",
+  "main": "index.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node index.js"
   },
   "author": "Balaji Rai",
   "license": "ISC",
